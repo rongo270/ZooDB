@@ -1,0 +1,74 @@
+
+CREATE TABLE animals (
+    animalid INTEGER PRIMARY KEY,
+    age INTEGER,
+    happiness INTEGER
+);
+
+CREATE TABLE animalsnames (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    nameofanimal VARCHAR(100)
+);
+
+CREATE TABLE aquariumfish (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    fishlength DOUBLE PRECISION,
+    hiscolor TEXT[],
+    histrait VARCHAR(255)
+);
+
+CREATE TABLE cervus (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    lengthoftherays DOUBLE PRECISION
+);
+
+CREATE TABLE clownfish (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    fishlength DOUBLE PRECISION
+);
+
+
+CREATE TABLE gender (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    gender VARCHAR(10)
+);
+
+CREATE TABLE goldfish (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    fishlength DOUBLE PRECISION,
+    hiscolor VARCHAR(255)
+);
+
+CREATE TABLE lemur (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    height DOUBLE PRECISION
+);
+
+CREATE TABLE lion (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    weight DOUBLE PRECISION
+);
+
+CREATE TABLE penguin (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    height DOUBLE PRECISION
+);
+
+CREATE TABLE tiger (
+    animalid INTEGER REFERENCES animals(animalid) ON DELETE CASCADE,
+    weight DOUBLE PRECISION
+);
+CREATE SEQUENCE animals_id_seq START 1000;
+ALTER TABLE animals ALTER COLUMN animalid SET DEFAULT nextval('animals_id_seq');
+-- add this nextval('animals_id_seq'::regclass)
+
+CREATE TABLE money(
+creditcardid INTEGER PRIMARY KEY,
+amount INTEGER
+);
+
+CREATE TABLE animals_price(
+name_of_animal VARCHAR(15) PRIMARY KEY,
+price INTEGER
+);
+
